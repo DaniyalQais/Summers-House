@@ -1542,6 +1542,17 @@ a:focus {
         display: none;
     }
 
+    /* Restore a fuller mobile hero: extra height weighted to the bottom so the
+       band reads taller while the CTA stays high in the first viewport. */
+    .header .hero {
+        padding-top: 34px;
+        padding-bottom: 46px;
+    }
+
+    .header .hero p {
+        margin: 8px 0 16px 0;
+    }
+
     .feature .feature-item .col-5,
     .feature .feature-item .col-7 {
         flex: 0 0 100%;
