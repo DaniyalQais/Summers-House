@@ -1542,15 +1542,16 @@ a:focus {
         display: none;
     }
 
-    /* Restore a fuller mobile hero: extra height weighted to the bottom so the
-       band reads taller while the CTA stays high in the first viewport. */
+    /* Restore a fuller mobile hero. The <=991px rule `.header .row { padding: 0
+       !important }` zeroes hero padding, so this needs !important to win.
+       Height is weighted to the bottom so the hero band reads complete. */
     .header .hero {
-        padding-top: 34px;
-        padding-bottom: 46px;
+        padding-top: 24px !important;
+        padding-bottom: 110px !important;
     }
 
     .header .hero p {
-        margin: 8px 0 16px 0;
+        margin: 10px 0 24px 0;
     }
 
     .feature .feature-item .col-5,
@@ -1561,5 +1562,19 @@ a:focus {
 
     .feature .feature-item .col-5 {
         margin-bottom: 15px;
+    }
+}
+
+/* On phones the estimate form sits directly below the hero copy, so the
+   duplicate primary CTA is hidden there; the form is the mobile conversion
+   path and the navbar CTA still jumps to it. Desktop/tablet keep the button. */
+@media (max-width: 767.98px) {
+    .header .hero a.btn[href="#free-estimate"] {
+        display: none;
+    }
+
+    .header .hero a.btn-hero-secondary {
+        margin-left: 0;
+        margin-top: 0;
     }
 }
