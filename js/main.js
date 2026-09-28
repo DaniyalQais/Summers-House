@@ -1,12 +1,24 @@
 (function ($) {
     "use strict";
-    
+
+    // Always apply sticky class initially for consistent fixed navbar
+    $(document).ready(function () {
+        if ($(window).scrollTop() > 5) {
+            $('.navbar').addClass('sticky');
+        }
+
+        // Re-check on resize for responsive behavior
+        $(window).trigger('scroll');
+    });
+
     // Sticky Navbar
     $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
+        if ($(this).scrollTop() > 5) {
             $('.navbar').addClass('sticky');
         } else {
-            $('.navbar').removeClass('sticky');
+            if ($(window).width() >= 992) {
+                $('.navbar').removeClass('sticky');
+            }
         }
     });
     
