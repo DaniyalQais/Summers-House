@@ -1,93 +1,86 @@
 (function ($) {
     "use strict";
 
-    // Always apply sticky class initially for consistent fixed navbar
-    $(document).ready(function () {
+    // Sticky Navbar
+    function updateStickyNavbar() {
         if ($(window).scrollTop() > 5) {
             $('.navbar').addClass('sticky');
+        } else if ($(window).width() >= 992) {
+            $('.navbar').removeClass('sticky');
         }
+    }
 
-        // Re-check on resize for responsive behavior
+    $(document).ready(function () {
+        updateStickyNavbar();
         $(window).trigger('scroll');
     });
 
-    // Sticky Navbar
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 5) {
-            $('.navbar').addClass('sticky');
-        } else {
-            if ($(window).width() >= 992) {
-                $('.navbar').removeClass('sticky');
-            }
-        }
-    });
-    
-    // Back to top button
-    $(window).scroll(function () {
+    $(window).on('scroll', function () {
+        updateStickyNavbar();
+
+        // Back to top button
         if ($(this).scrollTop() > 200) {
             $('.back-to-top').fadeIn('slow');
         } else {
             $('.back-to-top').fadeOut('slow');
         }
     });
+
     $('.back-to-top').click(function () {
         $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
         return false;
     });
-    
-    
-    // Dropdown on mouse hover
-    $(document).ready(function () {
-        function toggleNavbarMethod() {
-            if ($(window).width() > 992) {
-                $('.navbar .dropdown').on('mouseover', function () {
-                    $('.dropdown-toggle', this).trigger('click');
-                }).on('mouseout', function () {
-                    $('.dropdown-toggle', this).trigger('click').blur();
-                });
-            } else {
-                $('.navbar .dropdown').off('mouseover').off('mouseout');
-            }
+
+
+    // Smooth scroll for in-page anchors, accounting for the fixed navbar
+    $('a[href*="#"]').not('.back-to-top, [data-toggle]').on('click', function (e) {
+        var hash = this.hash;
+        if (!hash || hash === '#' || !$(hash).length) {
+            return;
         }
-        toggleNavbarMethod();
-        $(window).resize(toggleNavbarMethod);
+        if (this.pathname !== window.location.pathname && this.pathname !== '') {
+            return;
+        }
+
+        e.preventDefault();
+        var offset = $(hash).offset().top - $('.navbar').outerHeight() - 15;
+
+        $('html, body').animate({scrollTop: offset}, 800, 'easeInOutExpo', function () {
+            $(hash).attr('tabindex', '-1').trigger('focus');
+        });
     });
 
-
-    // Testimonials carousel
-    $(".testimonials-carousel").owlCarousel({
-        autoplay: true,
-        dots: true,
-        loop: true,
-        responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:3
-            }
+    // Collapse the mobile menu after picking a link
+    $('#navbarCollapse').on('click', 'a', function () {
+        if ($(window).width() < 992) {
+            $('#navbarCollapse').collapse('hide');
         }
     });
-    
-    
-    // Portfolio isotope and filter
-    var portfolioIsotope = $('.portfolio-container').isotope({
-        itemSelector: '.portfolio-item',
-        layoutMode: 'fitRows'
+
+
+    // Estimate forms are a design demo: no backend is wired up, so say so
+    // instead of pretending the request was delivered.
+    $(document).on('submit', '.estimate-form', function (e) {
+        e.preventDefault();
+
+        var form = $(this);
+        var status = form.nextAll('.form-status').first();
+        if (!status.length) {
+            status = form.find('.form-status').first();
+        }
+
+        if (!this.checkValidity()) {
+            status
+                .text('Please fill in the required fields so we know how to reach you.')
+                .addClass('is-visible is-error');
+            form.find(':invalid').first().trigger('focus');
+            return;
+        }
+
+        status
+            .text('This is a design demo, so your request was not sent. On the live site this form will deliver your details straight to Summers House Care.')
+            .removeClass('is-error')
+            .addClass('is-visible');
     });
 
-    $('#portfolio-flters li').on('click', function () {
-        $("#portfolio-flters li").removeClass('filter-active');
-        $(this).addClass('filter-active');
-
-        portfolioIsotope.isotope({filter: $(this).data('filter')});
-    });
-    
 })(jQuery);
-
