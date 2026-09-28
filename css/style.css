@@ -201,6 +201,133 @@ a:focus {
     color: #FFD662;
 }
 
+@media (max-width: 991px) {
+    .header .brand {
+        display: none;
+    }
+
+    .header .topbar {
+        display: none;
+    }
+
+    .header .row {
+        padding: 10px 0 !important;
+    }
+
+    .header .header-top {
+        padding: 0;
+        border-bottom: none;
+    }
+
+    .header .col-lg-9 {
+        max-width: 100%;
+        flex: 0 0 100%;
+        padding: 0;
+    }
+
+    .header .navbar {
+        background: #00539C !important;
+        border: none;
+        border-radius: 0;
+        z-index: 1;
+        padding: 10px 15px;
+        width: 100%;
+    }
+
+    .header .navbar .navbar-brand {
+        display: inline-block !important;
+        color: #FFD662 !important;
+        font-size: 22px;
+        font-weight: 400;
+        margin-right: auto;
+        padding-left: 0;
+    }
+
+    .header .navbar .navbar-toggler {
+        margin-left: auto;
+        border-color: rgba(255, 255, 255, 0.5);
+        padding: 8px 10px;
+    }
+
+    .header .navbar .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    .header .navbar .collapse.navbar-collapse {
+        background: #ffffff;
+        border-radius: 5px;
+        margin-top: 10px;
+        padding: 15px;
+    }
+
+    .header a.nav-link {
+        padding: 8px 0;
+        color: #00539C !important;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .header a.nav-link:hover,
+    .header a.nav-link.active {
+        color: #FFD662 !important;
+    }
+
+    .header .dropdown-menu {
+        box-shadow: none;
+        border: 1px solid #eee;
+    }
+
+    .header .navbar .btn {
+        display: block;
+        width: 100%;
+        margin: 10px 0 0 0;
+        text-align: center;
+        background: #FFD662;
+        color: #000;
+    }
+
+    .header .navbar .btn:hover {
+        background: #00539C;
+        color: #fff;
+    }
+
+    .navbar.sticky {
+        max-width: 100%;
+        padding: 10px 15px;
+    }
+
+    .navbar.sticky .navbar-brand {
+        font-size: 22px;
+    }
+
+    .navbar.sticky .navbar-toggler {
+        margin-left: auto;
+    }
+
+    .navbar.sticky .collapse.navbar-collapse {
+        background: #ffffff;
+        margin-top: 10px;
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    .navbar.sticky .navbar-light a.nav-link {
+        color: #00539C !important;
+        border-bottom: 1px solid #f0f0f0;
+        padding: 8px 0;
+    }
+
+    .navbar.sticky .navbar-light a.nav-link:hover,
+    .navbar.sticky .navbar-light a.nav-link.active {
+        color: #FFD662 !important;
+    }
+
+    .navbar.sticky .btn {
+        display: block;
+        width: 100%;
+        margin: 10px 0 0 0;
+    }
+}
+
 @media (min-width: 992px) {
     .header .navbar {
         background: transparent !important;
@@ -222,40 +349,6 @@ a:focus {
     .header .navbar-light a.nav-link:hover,
     .header .navbar-light a.nav-link.active {
         color: #FFD662;
-    }
-}
-
-@media (max-width: 992px) {
-    .header .brand {
-        text-align: center;
-        margin-bottom: 15px;
-    }
-    
-    .header .topbar {
-        text-align: center;
-        margin-bottom: 15px;
-    }
-    
-    .header .topbar .topbar-col {
-        margin: 0;
-    }
-    
-    .header .topbar .topbar-social {
-        margin-top: 5px;
-    }
-    
-    .header .navbar {
-        background: #ffffff !important;
-        border: none;
-        z-index: 1;
-    }
-    
-    .header a.nav-link {
-        padding: 5px 0;
-    }
-    
-    .header .dropdown-menu {
-        box-shadow: none;
     }
 }
 
@@ -282,13 +375,34 @@ a:focus {
     margin-right: 8px;
 }
 
-@media (max-width: 992px) {
-    .header .navbar {
-        border-radius: 5px;
+@media (max-width: 575px) {
+    .header .navbar .navbar-brand {
+        font-size: 18px;
     }
-    
-    .header .navbar .btn {
-        display: none;
+
+    .header .navbar {
+        padding: 8px 12px;
+    }
+
+    .navbar.sticky {
+        padding: 8px 12px;
+    }
+
+    .navbar.sticky .navbar-brand {
+        font-size: 18px;
+    }
+
+    .header .hero {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .header .hero h2 {
+        font-size: 36px;
+    }
+
+    .header .hero p {
+        font-size: 16px;
     }
 }
 
