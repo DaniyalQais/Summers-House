@@ -1542,14 +1542,6 @@ a:focus {
         display: none;
     }
 
-    /* Restore a fuller mobile hero. The <=991px rule `.header .row { padding: 0
-       !important }` zeroes hero padding, so this needs !important to win.
-       Height is weighted to the bottom so the hero band reads complete. */
-    .header .hero {
-        padding-top: 24px !important;
-        padding-bottom: 110px !important;
-    }
-
     .header .hero p {
         margin: 10px 0 24px 0;
     }
@@ -1565,16 +1557,59 @@ a:focus {
     }
 }
 
-/* On phones the estimate form sits directly below the hero copy, so the
-   duplicate primary CTA is hidden there; the form is the mobile conversion
-   path and the navbar CTA still jumps to it. Desktop/tablet keep the button. */
+/* Stacked phone layout: the hero band is only the headline, copy and hero
+   buttons, so the photo/blue background is moved off .header.home and onto the
+   text column. The estimate card then sits on plain white below the hero
+   instead of inside it. The column absorbs the 70px fixed navbar offset
+   (.header .row padding is zeroed below 992px) and is sized to 85vh so part of
+   the estimate section shows on the first screen. */
 @media (max-width: 767.98px) {
-    .header .hero a.btn[href="#free-estimate"] {
-        display: none;
+    .header.home {
+        margin-bottom: 0;
+        background: #ffffff;
+    }
+
+    .header .hero {
+        padding: 0 !important;
+    }
+
+    .header .hero .col-md-7 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        min-height: 85vh;
+        margin-top: -70px;
+        padding-top: 120px;
+        padding-bottom: 60px;
+        text-align: center;
+        background: linear-gradient(rgba(0, 83, 156, .6), rgba(0, 83, 156, .6), rgba(0, 83, 156, .6)), url(../img/header.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .header .hero h1 {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+    .header .hero p {
+        font-size: 16px;
+    }
+
+    .header .hero a.btn {
+        width: 100%;
+        text-align: center;
     }
 
     .header .hero a.btn-hero-secondary {
-        margin-left: 0;
-        margin-top: 0;
+        margin: 20px 0 0 0;
+    }
+
+    .header .hero .col-md-5 {
+        padding-top: 0;
+        padding-bottom: 45px;
     }
 }
