@@ -1584,7 +1584,7 @@ a:focus {
         padding-top: 120px;
         padding-bottom: 60px;
         text-align: center;
-        background: linear-gradient(rgba(0, 83, 156, .6), rgba(0, 83, 156, .6), rgba(0, 83, 156, .6)), url(../img/header.jpg);
+        background: linear-gradient(rgba(0, 83, 156, .6), rgba(0, 83, 156, .6), rgba(0, 83, 156, .6)), url(../img/hero-mobile.png);
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
